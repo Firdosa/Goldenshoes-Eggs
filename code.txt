@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goldenshoes Eggs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #FFD700;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .buttons div {
+            padding: 10px;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .blue { background-color: #0000FF; }
+        .green { background-color: #008000; }
+        .red { background-color: #FF0000; }
+        .purple { background-color: #800080; }
+        .table-container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 100%;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .sidebar a {
+            display: block;
+            margin: 10px 0;
+            color: #000;
+            text-decoration: none;
+        }
+        .charts {
+            width: 80%;
+            margin: 20px auto;
+            display: flex;
+            justify-content: space-around;
+        }
+        .chart {
+            width: 30%;
+        }
+        .chart canvas {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Goldenshoes Eggs
+    </header>
+    <div class="buttons">
+        <div class="blue">Sales</div>
+        <div class="green">Cost</div>
+        <div class="red">Total Sales</div>
+        <div class="purple">Profit</div>
+    </div>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Total Boxes</th>
+                    <th>Cost Price</th>
+                    <th>Sale Price</th>
+                    <th>Profit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>Total</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+        <button>Add More Columns</button>
+    </div>
+    <div class="sidebar">
+        <a href="#">Settings</a>
+        <a href="#">Login</a>
+        <a href="#">Logout</a>
+        <a href="#">Monthly Sales</a>
+        <a href="#">Yearly Sales</a>
+        <a href="#">Daily Sales</a>
+        <a href="#">List of Customers</a>
+    </div>
+    <div class="charts">
+        <div class="chart">
+            <canvas id="lineChart"></canvas>
+        </div>
+        <div class="chart">
+            <canvas id="barChart"></canvas>
+        </div>
+        <div class="chart">
+            <canvas id="pieChart"></canvas>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctxLine = document.getElementById('lineChart').getContext('2d');
+        const ctxBar = document.getElementById('barChart').getContext('2d');
+        const ctxPie = document.getElementById('pieChart').getContext('2d');
+
+        const lineChart = new Chart(ctxLine, {
+            type: 'line',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [{
+                    label: 'Sales',
+                    data: [10, 20, 30, 40, 50, 60],
+                    borderColor: 'blue',
+                    borderWidth: 1
+                }]
+            }
+        });
+
+        const barChart = new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [{
+                    label: 'Sales',
+                    data: [10, 20, 30, 40, 50, 60],
+                    backgroundColor: 'green',
+                    borderWidth: 1
+                }]
+            }
+        });
+
+        const pieChart = new Chart(ctxPie, {
+            type: 'pie',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                datasets: [{
+                    label: 'Sales',
+                    data: [10, 20, 30, 40, 50, 60],
+                    backgroundColor: ['red', 'blue', 'green', 'purple', 'orange', 'yellow']
+                }]
+            }
+        });
+    </script>
+</body>
+</html>
